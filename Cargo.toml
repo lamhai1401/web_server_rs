@@ -1,0 +1,20 @@
+[package]
+name = "web_server_rs"
+version = "0.1.0"
+authors = ["lamhai <lamthanhhai141@gmail.com>"]
+edition = "2018"
+default-run = "web_server_rs"
+readme = "README.md"
+homepage = "https://github.com/lamhai1401/web_server_rs"
+repository = "https://github.com/lamhai1401/web_server_rs"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[lib]
+name = "web_server_rs"
+# path = "src/"
+
+[[bin]]
+name = "web_server_rs"
+path = "src/bin/main.rs"
