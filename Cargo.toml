@@ -10,10 +10,10 @@ repository = "https://github.com/lamhai1401/web_server_rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-rt = "2.2.0"
 env_logger = "0.8"
 rustls = "0.18"
 actix-web = { version = "3", features = ["rustls"] }
+actix-cors = "0.5.4"
 
 # rustls = "0.16"
 # actix-web = { version = "2.0.0", features = ["rustls"] }

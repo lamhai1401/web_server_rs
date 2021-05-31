@@ -1,6 +1,8 @@
 use std::fs::File;
 use std::io::BufReader;
 
+use actix_cors::Cors;
+use actix_web::http::header;
 use actix_web::{get, middleware, web, App, HttpRequest, HttpResponse, HttpServer};
 use rustls::internal::pemfile::{certs, rsa_private_keys};
 use rustls::{NoClientAuth, ServerConfig};
@@ -25,9 +27,17 @@ fn load_ssl() -> ServerConfig {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let config = load_ssl();
+
     HttpServer::new(|| {
+        let cors = Cors::default()
+            // .allowed_origin("http://localhost:3000")
+            .allowed_methods(vec!["GET", "POST"])
+            .allowed_headers(vec![header::AUTHORIZATION, header::ACCEPT])
+            .allowed_header(header::CONTENT_TYPE)
+            .max_age(3600);
         App::new()
             // .on_connect(get_conn_info)
+            .wrap(cors)
             .wrap(middleware::DefaultHeaders::new().header("X-Version", "0.2"))
             .wrap(middleware::Compress::default())
             .wrap(middleware::Logger::default())
