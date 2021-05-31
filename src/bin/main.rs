@@ -41,8 +41,10 @@ async fn main() -> std::io::Result<()> {
             .wrap(middleware::DefaultHeaders::new().header("X-Version", "0.2"))
             .wrap(middleware::Compress::default())
             .wrap(middleware::Logger::default())
+            .data(web::JsonConfig::default().limit(4096)) // <- limit size of the payload (global configuration)
             .service(no_params)
     })
+    // .bind("127.0.0.1:8443")?
     .bind_rustls("127.0.0.1:8443", config)?
     .run()
     .await
