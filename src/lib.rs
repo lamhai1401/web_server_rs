@@ -6,6 +6,7 @@ pub mod utils;
 
 #[macro_use]
 extern crate diesel; // This sounds like that the #[macro_use] annotation is missing on your extern crate diesel
+pub mod errors;
 pub mod models;
 pub mod schema;
 
