@@ -1,6 +1,5 @@
 // extern crate web_server_rs;
 // use web_server_rs::utils::ssl::load_ssl;
-
 use actix_cors::Cors;
 use actix_files::{Files, NamedFile};
 use actix_web::http::header;
@@ -47,3 +46,5 @@ async fn main() -> std::io::Result<()> {
     .run()
     .await
 }
+
+// sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
